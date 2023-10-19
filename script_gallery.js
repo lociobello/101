@@ -7,6 +7,7 @@ const closeButton = document.getElementById("close-button");
 const arrowLeft = document.getElementById("arrow-left");
 const arrowRight = document.getElementById("arrow-right");
 let currentIndex;
+let scrollPosition = 0;
 
 // Event listener to open the enlarged image on click
 galleryImages.forEach((img, index) => {
@@ -33,6 +34,8 @@ galleryImages.forEach((img, index) => {
       document.getElementById("close-button").style.opacity = "1";
     }, 300);
     // Disable scrolling on the page
+    scrollPosition = document.documentElement.scrollTop; // Store the current scroll position
+    document.body.style.setProperty("--st", -scrollPosition + "px");
     document.body.classList.add("no-scroll");
   });
 });
@@ -59,6 +62,7 @@ function closeEnlargedImage() {
   }, 300);
   // Enable scrolling on the page
   document.body.classList.remove("no-scroll");
+  document.documentElement.scrollTop = scrollPosition; // Restore the scroll position
 }
 
 // Event listener to navigate to the previous image
@@ -90,12 +94,3 @@ function updateArrowVisibility() {
   arrowLeft.style.display = currentIndex === 0 ? "none" : "block";
   arrowRight.style.display = currentIndex === galleryImages.length - 1 ? "none" : "block";
 }
-
-//-------------- VIMEO APPEARS -------------------
-
-const ctaButton = document.getElementById("cta-btn");
-const vimeoContainer = document.getElementById("vimeo-container");
-
-ctaButton.addEventListener("click", () => {
-  vimeoContainer.style.width = "1000px";
-});

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>101</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <div id="main-container" class="gallery-container">
+      <div id="navbar">
+        <div><a href="index.html">101</a></div>
+        <div><a href="gallery.html" class="nvb-active">GALLERY</a></div>
+        <div><a href="process.html">PROCESS</a></div>
+        <div><a href="credits.html">CREDITS</a></div>
+      </div>
+      <div id="gradient"></div>
+      <div id="gallery-box">
+        <div class="gallery-row">
+          <img class="gallery-img" src="assets/images/gallery/ministero.png" />
+          <img class="gallery-img" src="assets/images/gallery/corridoio.png" />
+          <img class="gallery-img" src="assets/images/gallery/scale.png" />
+        </div>
+        <div class="gallery-row">
+          <img class="gallery-img" src="assets/images/gallery/sotterraneo2.png" />
+          <img class="gallery-img" src="assets/images/gallery/telecamera.png" />
+          <img class="gallery-img" src="assets/images/gallery/piazza.png" />
+        </div>
+        <div class="gallery-row">
+          <img class="gallery-img" src="assets/images/gallery/sobborghi.png" />
+          <img class="gallery-img" src="assets/images/gallery/psicopolizziotto.png" />
+          <img class="gallery-img" src="assets/images/gallery/appartamento2.png" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Enlarged image display -->
+    <div id="enlarged-image-container">
+      <span id="close-button">&times;</span>
+      <img id="enlarged-image" src="" alt="Enlarged Image" />
+      <div id="arrow-left">←</div>
+      <div id="arrow-right">→</div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="libraries/grained-master/grained.js"></script>
+  </body>
+</html>

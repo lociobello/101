@@ -17,7 +17,6 @@
 
 body {
   margin: 0 auto;
-  /* height: 100%; */
   overflow-y: overlay;
 }
 i {
@@ -60,7 +59,6 @@ a:hover {
   border-bottom: 2px solid rgb(255, 51, 0);
 }
 .no-scroll {
-  /* overflow: hidden; */
   position: fixed;
   top: var(--st, 0);
   inline-size: 100%;
@@ -73,66 +71,6 @@ a:hover {
   z-index: 100;
 }
 
-/* --------------------- GRAIN ----------------------- */
-
-/* .hero {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100vh;
-  background-image: url("https://i.picsum.photos/id/100/2500/1656.jpg?hmac=gWyN-7ZB32rkAjMhKXQgdHOIBRHyTSgzuOK6U0vXb1w");
-  background-position: center;
-}
-
-.hero:after {
-  content: "";
-  background-image: url("https://upload.wikimedia.org/wikipedia/commons/7/76/1k_Dissolve_Noise_Texture.png");
-  height: 400%;
-  width: 400%;
-  position: fixed;
-  opacity: 0.08;
-  animation: animateGrain 6s steps(10) infinite;
-}
-
-@keyframes animateGrain {
-  0%,
-  100% {
-    transform: translate(0, 0);
-  }
-  10% {
-    transform: translate(-5%, -10%);
-  }
-  20% {
-    transform: translate(-15%, -20%);
-  }
-  30% {
-    transform: translate(-5%, -10%);
-  }
-  40% {
-    transform: translate(-15%, -20%);
-  }
-
-  50% {
-    transform: translate(-5%, -10%);
-  }
-  60% {
-    transform: translate(-15%, -20%);
-  }
-  70% {
-    transform: translate(-5%, -10%);
-  }
-  80% {
-    transform: translate(-15%, -20%);
-  }
-  90% {
-    transform: translate(-5%, -10%);
-  }
-  100% {
-    transform: translate(-15%, -20%);
-  }
-} */
-
 /* ------------------- HOME ----------------------- */
 #cta {
   display: flex;
@@ -140,7 +78,7 @@ a:hover {
   justify-content: center;
   width: fit-content;
   bottom: 40vh;
-  /* z-index: 10; */
+  z-index: 5;
 }
 #cta-btn {
   border: 2px solid white;
@@ -153,7 +91,6 @@ a:hover {
 #credit {
   bottom: 20px;
   position: fixed;
-  /* z-index: 10; */
 }
 .home-container {
   background-image: url("assets/images/home1.jpg");
@@ -168,31 +105,33 @@ a:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0); /* Dark background with initial opacity 0 */
-  /* pointer-events: none;  */
+  background-color: rgba(0, 0, 0, 0);
   transition: background-color 0.4s ease-in-out;
   cursor: default;
+  z-index: 4;
 }
-/* #overlay.clickable {
-  cursor: zoom-out;
-} */
 
 #vimeo-container {
-  width: 20%;
+  width: 40%;
   max-height: 80%;
   opacity: 0;
   margin: 100px 100px;
-  transition: width 0.4s cubic-bezier(0.16, 0.44, 0.01, 0.99);
+  transition: 0.3s cubic-bezier(0.22, 0.51, 0.4, 0.99);
+  z-index: 6;
+  pointer-events: none;
+  transform: scale(0.7);
 }
 #vimeo-container iframe {
   display: block;
   opacity: 1;
-  transition: opacity 0.4s ease-out;
+  transition: opacity 0.3s ease-out;
 }
 #vimeo-container.expanded {
   width: 60%;
   max-height: 80%;
   opacity: 1;
+  pointer-events: all;
+  transform: scale(1);
 }
 #vimeo-container.expanded iframe {
   opacity: 1;
@@ -221,7 +160,6 @@ a:hover {
   flex-direction: column;
   gap: 20px;
   margin: 100px 0;
-  /* z-index: 8; */
 }
 .gallery-row {
   display: flex;
@@ -247,13 +185,10 @@ a:hover {
   background-color: rgba(0, 0, 0, 0.9);
   align-items: center;
   justify-content: center;
-  /* transform: scale(0.8);  */
-  opacity: 0; /* Initial opacity */
-  transition: opacity 0.2s ease; /* Transition for scale and opacity */
-  /* cursor: zoom-out; */
+  opacity: 0;
+  transition: opacity 0.2s ease;
 }
 #enlarged-image-container.show {
-  /* transform: scale(1);  */
   opacity: 1;
 }
 #arrow-left,
@@ -317,71 +252,6 @@ a:hover {
 #arrow-right:hover {
   background-color: rgba(0, 0, 0, 0.8);
 }
-
-/* ----------- Focus Image 2 -------------- */
-/* .overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.8);
-  z-index: 1000;
-}
-
-
-.enlarged-image-container {
-  display: none;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1001;
-  max-width: 90%;
-  max-height: 90%;
-  transition: transform 0.3s ease;
-}
-.enlarged-image-container.enlarged {
-  transform: translate(-50%, -50%) scale(1.5);
-}
-
-.enlarged-image-container img {
-  max-width: 90%;
-  max-height: 90%;
-}
-
-.enlarged {
-  transform: translate(-50%, -50%) scale(1.5);
-}
-
-.overlay-visible {
-  display: block;
-}
-.overlay.overlay-visible {
-  display: block;
-}
-#arrow-left {
-  position: absolute;
-  top: 50%;
-  left: 20px;
-  font-size: 30px;
-  cursor: pointer;
-  color: white;
-  z-index: 1002;
-  display: block;
-}
-
-#arrow-right {
-  position: absolute;
-  top: 50%;
-  right: 20px;
-  font-size: 30px;
-  cursor: pointer;
-  color: white;
-  z-index: 1002;
-  display: block;
-} */
 
 /* ------------------- PROCESS ----------------------- */
 .process-container {

@@ -9,88 +9,91 @@ const arrowRight = document.getElementById("arrow-right");
 let currentIndex;
 let scrollPosition = 0;
 
-// Event listener to open the enlarged image on click
-galleryImages.forEach((img, index) => {
-  img.addEventListener("click", () => {
-    currentIndex = index;
-    displayEnlargedImage(index);
-    updateArrowVisibility();
-    enlargedImageContainer.style.display = "flex"; // Display the container
-    setTimeout(() => {
-      enlargedImageContainer.classList.add("show");
-    }, 10);
-    // Set cursor to zoom-out when outside the image
-    enlargedImage.addEventListener("mouseleave", () => {
-      document.body.style.cursor = "zoom-out";
-    });
-    // Set cursor to default when inside the image
-    enlargedImage.addEventListener("mouseenter", () => {
-      document.body.style.cursor = "default";
-    });
-    // Delay showing the arrows and close button with a fade-in effect
-    setTimeout(() => {
-      document.getElementById("arrow-left").style.opacity = "1";
-      document.getElementById("arrow-right").style.opacity = "1";
-      document.getElementById("close-button").style.opacity = "1";
-    }, 300);
-    // Disable scrolling on the page
-    scrollPosition = document.documentElement.scrollTop; // Store the current scroll position
-    document.body.style.setProperty("--st", -scrollPosition + "px");
-    document.body.classList.add("no-scroll");
-  });
-});
-
-// Event listener to close the enlarged image
-closeButton.addEventListener("click", closeEnlargedImage);
-
-// Event listener to close the enlarged image when clicking outside the image
-enlargedImageContainer.addEventListener("click", (event) => {
-  if (event.target === enlargedImageContainer) {
-    closeEnlargedImage();
-  }
-});
-
-function closeEnlargedImage() {
-  // Reset cursor to default
-  document.body.style.cursor = "default";
-  // Remove class to hide the container with a fade-out transition
-  enlargedImageContainer.classList.remove("show");
-
-  // Hide the container after the transition
-  setTimeout(() => {
-    enlargedImageContainer.style.display = "none";
-  }, 300);
-  // Enable scrolling on the page
-  document.body.classList.remove("no-scroll");
-  document.documentElement.scrollTop = scrollPosition; // Restore the scroll position
-}
-
-// Event listener to navigate to the previous image
-arrowLeft.addEventListener("click", () => {
-  if (currentIndex > 0) {
-    currentIndex--;
-    displayEnlargedImage(currentIndex);
-    updateArrowVisibility();
-  }
-});
-
-// Event listener to navigate to the next image
-arrowRight.addEventListener("click", () => {
-  if (currentIndex < galleryImages.length - 1) {
-    currentIndex++;
-    displayEnlargedImage(currentIndex);
-    updateArrowVisibility();
-  }
-});
-
-// Function to display the enlarged image at the given index
 function displayEnlargedImage(index) {
   enlargedImage.src = galleryImages[index].src;
   enlargedImageContainer.style.display = "flex";
 }
 
-// Function to update arrow visibility based on the current index
 function updateArrowVisibility() {
   arrowLeft.style.display = currentIndex === 0 ? "none" : "block";
   arrowRight.style.display = currentIndex === galleryImages.length - 1 ? "none" : "block";
+}
+
+function enableGalleryEnlargement() {
+  galleryImages.forEach((img, index) => {
+    img.addEventListener("click", () => {
+      currentIndex = index;
+      displayEnlargedImage(index);
+      updateArrowVisibility();
+      enlargedImageContainer.style.display = "flex";
+      setTimeout(() => {
+        enlargedImageContainer.classList.add("show");
+      }, 10);
+      enlargedImage.addEventListener("mouseleave", () => {
+        document.body.style.cursor = "zoom-out";
+      });
+      enlargedImage.addEventListener("mouseenter", () => {
+        document.body.style.cursor = "default";
+      });
+      setTimeout(() => {
+        document.getElementById("arrow-left").style.opacity = "1";
+        document.getElementById("arrow-right").style.opacity = "1";
+        document.getElementById("close-button").style.opacity = "1";
+      }, 300);
+      scrollPosition = document.documentElement.scrollTop;
+      document.body.style.setProperty("--st", -scrollPosition + "px");
+      document.body.classList.add("no-scroll");
+    });
+  });
+
+  closeButton.addEventListener("click", closeEnlargedImage);
+
+  enlargedImageContainer.addEventListener("click", (event) => {
+    if (event.target === enlargedImageContainer) {
+      closeEnlargedImage();
+    }
+  });
+
+  arrowLeft.addEventListener("click", () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+      displayEnlargedImage(currentIndex);
+      updateArrowVisibility();
+    }
+  });
+
+  arrowRight.addEventListener("click", () => {
+    if (currentIndex < galleryImages.length - 1) {
+      currentIndex++;
+      displayEnlargedImage(currentIndex);
+      updateArrowVisibility();
+    }
+  });
+}
+
+function disableGalleryEnlargement() {
+  galleryImages.forEach((img) => {
+    img.replaceWith(img.cloneNode(true));
+  });
+}
+
+function handleResize() {
+  if (window.matchMedia("(max-width: 768px)").matches) {
+    disableGalleryEnlargement();
+  } else {
+    enableGalleryEnlargement();
+  }
+}
+
+window.addEventListener("resize", handleResize);
+handleResize();
+
+function closeEnlargedImage() {
+  document.body.style.cursor = "default";
+  enlargedImageContainer.classList.remove("show");
+  setTimeout(() => {
+    enlargedImageContainer.style.display = "none";
+  }, 300);
+  document.body.classList.remove("no-scroll");
+  document.documentElement.scrollTop = scrollPosition;
 }

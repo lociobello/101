@@ -1,4 +1,4 @@
-const ctaButton = document.getElementById("cta-btn");
+const ctaButton = document.getElementById("cta");
 const vimeoContainer = document.getElementById("vimeo-container");
 const overlay = document.getElementById("overlay");
 

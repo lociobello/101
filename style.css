@@ -28,7 +28,7 @@ a {
   text-decoration: none;
   transition: 0.1s ease-in-out;
 }
-a:hover {
+#navbar a:hover {
   color: rgb(255, 51, 0);
   border-color: rgb(255, 51, 0);
 }
@@ -77,18 +77,39 @@ a:hover {
   display: flex;
   position: fixed;
   justify-content: center;
+  align-items: center;
   width: fit-content;
   bottom: 40vh;
   z-index: 5;
+  border: 2px solid white;
+  transition: 0.1s ease-in-out;
+  padding: 5px 20px;
+  cursor: pointer;
 }
-#cta-btn {
+/* #cta-btn {
   border: 2px solid white;
   transition: 0.1s ease-in-out;
   padding: 3px 20px;
-}
-#cta-btn:hover {
+} */
+#cta:hover {
   border: 2px solid rgba(255, 51, 0);
+  color: rgba(255, 51, 0);
 }
+#cta:hover .play {
+  border-left-color: rgba(255, 51, 0);
+}
+.play {
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-left: 16px solid #ffffff;
+  border-bottom: 8px solid transparent;
+  transition: 0.1s ease-in-out;
+}
+
+/* #cta-btn:hover {
+  border: 2px solid rgba(255, 51, 0);
+} */
 #credit {
   bottom: 30px;
   position: fixed;

@@ -204,29 +204,6 @@ a:hover {
 #enlarged-image-container.show {
   opacity: 1;
 }
-#arrow-left,
-#arrow-right,
-#close-button {
-  /* Set initial opacity and transition for arrows and close button */
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-
-#enlarged-image-container.show #arrow-left,
-#enlarged-image-container.show #arrow-right,
-#enlarged-image-container.show #close-button {
-  /* Fade in the arrows and close button when the image is displayed */
-  opacity: 1;
-}
-
-#close-button {
-  position: absolute;
-  top: 15px;
-  right: 35px;
-  font-size: 40px;
-  cursor: pointer;
-  color: white;
-}
 
 #enlarged-image {
   display: flex;
@@ -237,33 +214,6 @@ a:hover {
 }
 #enlarged-image-container.show #enlarged-image {
   transform: scale(1); /* Scale when displayed for the image */
-}
-
-#arrow-left,
-#arrow-right {
-  position: absolute;
-  top: 50%;
-  width: auto;
-  padding: 16px;
-  margin-top: -22px;
-  color: white;
-  font-weight: bold;
-  font-size: 40px;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
-#arrow-left {
-  left: 20px;
-}
-
-#arrow-right {
-  right: 20px;
-}
-
-#arrow-left:hover,
-#arrow-right:hover {
-  background-color: rgba(0, 0, 0, 0.8);
 }
 
 /* ------------------- PROCESS ----------------------- */

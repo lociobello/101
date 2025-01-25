@@ -17,6 +17,6 @@ function toggleVimeo() {
   vimeoContainer.classList.toggle("expanded");
 
   const isExpanded = vimeoContainer.classList.contains("expanded");
-  overlay.style.backgroundColor = isExpanded ? "rgba(0, 0, 0, 0.8)" : "rgba(0, 0, 0, 0)";
+  overlay.style.backgroundColor = isExpanded ? "rgba(0, 0, 0, 1)" : "rgba(0, 0, 0, 0)";
   overlay.style.cursor = isExpanded ? "zoom-out" : "default";
 }

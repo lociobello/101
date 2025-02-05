@@ -3,9 +3,6 @@
 const galleryImages = document.querySelectorAll(".gallery-img");
 const enlargedImageContainer = document.getElementById("enlarged-image-container");
 const enlargedImage = document.getElementById("enlarged-image");
-// const closeButton = document.getElementById("close-button");
-// const arrowLeft = document.getElementById("arrow-left");
-// const arrowRight = document.getElementById("arrow-right");
 let currentIndex;
 let scrollPosition = 0;
 
@@ -39,7 +36,12 @@ function enableGalleryEnlargement() {
     const mouseY = event.clientY;
     const imageRect = enlargedImage.getBoundingClientRect();
 
-    if (mouseX < imageRect.left || mouseX > imageRect.right || mouseY < imageRect.top || mouseY > imageRect.bottom) {
+    if (
+      mouseX < imageRect.left ||
+      mouseX > imageRect.right ||
+      mouseY < imageRect.top ||
+      mouseY > imageRect.bottom
+    ) {
       enlargedImageContainer.style.cursor = "zoom-out";
     } else if (mouseX < containerWidth / 2) {
       enlargedImageContainer.style.cursor = "w-resize";

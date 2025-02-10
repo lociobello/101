@@ -245,7 +245,7 @@ a {
   background-color: black;
 }
 .gallery-proc {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 100px 200px;
 }
 
@@ -291,6 +291,9 @@ h2 {
   flex-direction: row;
   gap: 20px;
   justify-content: center;
+}
+.proc:hover {
+  cursor: unset;
 }
 
 /* ------------------- CREDITS ----------------------- */

@@ -93,6 +93,18 @@ a {
   padding: 5px 20px;
   cursor: pointer;
 }
+#cta-temp {
+  display: flex;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  bottom: 40vh;
+  z-index: 5;
+  border: 2px solid white;
+  transition: 0.1s ease-in-out;
+  padding: 5px 20px;
+}
 /* #cta-btn {
   border: 2px solid white;
   transition: 0.1s ease-in-out;
@@ -304,7 +316,7 @@ h2 {
   text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 20px;
   margin: 100px 0 150px 0;
   /* z-index: 10; */
 }
@@ -322,6 +334,15 @@ h2 {
 }
 .credit-item {
   line-height: 1.5em;
+}
+.credit-item a {
+  text-decoration: underline solid white;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+.credit-item a:hover {
+  color: rgb(255, 51, 0);
+  text-decoration-color: rgb(255, 51, 0);
 }
 
 /* ------------------- MEDIA QUERIES ----------------------- */

@@ -99,11 +99,12 @@ a {
   justify-content: center;
   align-items: center;
   width: fit-content;
-  bottom: 40vh;
+  bottom: 50vh;
   z-index: 5;
   border: 2px solid white;
   transition: 0.1s ease-in-out;
   padding: 5px 20px;
+  /* border: none; */
 }
 /* #cta-btn {
   border: 2px solid white;

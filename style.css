@@ -95,11 +95,12 @@ a {
 }
 #cta-temp {
   display: flex;
-  position: fixed;
+  /* position: fixed; */
+  position: absolute;
   justify-content: center;
   align-items: center;
   width: fit-content;
-  bottom: 50vh;
+  top: 50vh;
   z-index: 5;
   border: 2px solid white;
   transition: 0.1s ease-in-out;

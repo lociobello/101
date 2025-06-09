@@ -136,8 +136,12 @@ a {
 #credit {
   bottom: 30px;
   position: absolute;
-  z-index: 2;
+  z-index: 5;
   text-align: center;
+}
+#credit a {
+  text-decoration: underline solid white;
+  text-underline-offset: 0.2em;
 }
 .home-container {
   background-image: url("assets/images/home2.png");

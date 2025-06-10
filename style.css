@@ -136,8 +136,9 @@ a {
 #credit {
   bottom: 30px;
   position: absolute;
-  z-index: 3;
+  z-index: 5;
   text-align: center;
+  transition: 0.3s ease-in-out;
 }
 #credit a {
   text-decoration: underline solid white;

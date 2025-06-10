@@ -136,7 +136,7 @@ a {
 #credit {
   bottom: 30px;
   position: absolute;
-  z-index: 5;
+  z-index: 3;
   text-align: center;
 }
 #credit a {

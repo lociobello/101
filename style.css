@@ -31,20 +31,13 @@ i {
   font-style: italic;
 }
 
-a,
-a:visited {
-  color: white;
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
-  /* For compatibility, you can keep the next line if you want a specific color/thickness */
-  /* text-decoration: underline solid white; */
+a {
+  text-decoration: none;
   transition: 0.1s ease-in-out;
 }
-
 #navbar a:hover {
   color: rgb(255, 51, 0);
   border-color: rgb(255, 51, 0);
-  text-decoration-color: rgb(255, 51, 0);
 }
 
 #main-container {
@@ -101,7 +94,6 @@ a:visited {
   transition: 0.1s ease-in-out;
   padding: 5px 20px;
   cursor: pointer;
-  text-decoration: none;
 }
 #cta-temp {
   display: flex;
@@ -136,7 +128,6 @@ a:visited {
   border-left: 16px solid #ffffff;
   border-bottom: 8px solid transparent;
   transition: 0.1s ease-in-out;
-  text-decoration: none;
 }
 
 /* #cta-btn:hover {
@@ -367,10 +358,9 @@ h2 {
   line-height: 1.5em;
 }
 .credit-item a {
-  color: white;
-  text-decoration: underline;
+  text-decoration: underline solid white;
+  text-decoration-thickness: 1px;
   text-underline-offset: 0.2em;
-  /* text-decoration-thickness: 1px; */
 }
 .credit-item a:hover {
   color: rgb(255, 51, 0);

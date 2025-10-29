@@ -286,7 +286,7 @@ a {
 }
 .gallery-proc {
   max-width: 1200px;
-  margin: 100px 200px;
+  margin: 70px 200px;
 }
 
 .proc {
@@ -295,12 +295,13 @@ a {
 }
 .proc-nav {
   display: flex;
-  position: fixed;
+  position: sticky;
   gap: 20px;
   flex-direction: row;
   justify-content: center;
   top: 55px;
   z-index: 10;
+  margin-bottom: -20px;
 }
 .proc-nav a:hover {
   color: rgb(255, 51, 0);
@@ -345,6 +346,12 @@ h2 {
 }
 .proc-caption {
   margin-top: 0;
+}
+.proc-text {
+  font-size: 16px;
+  max-width: 650px;
+  z-index: 10;
+  margin-bottom: 30px;
 }
 
 /* ------------------- CREDITS ----------------------- */

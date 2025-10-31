@@ -77,12 +77,12 @@
         <section id="moodboard" class="proc-section">
           <h2>MOODBOARD</h2>
           <video
-            src="assets/images/process/moodboard-1.mp4"
+            data-src="assets/images/process/moodboard-1.mp4"
             muted
             loop
-            autoplay
             playsinline
-            class="gallery-img proc"
+            preload="none"
+            class="gallery-img proc deferred-video"
           ></video>
         </section>
 
@@ -99,80 +99,80 @@
         <section id="environments" class="proc-section">
           <h2>ENVIRONMENTS</h2>
           <video
-            src="assets/images/process/PROCESS ministeri_1.mp4"
+            data-src="assets/images/process/PROCESS ministeri_1.mp4"
             muted
             loop
-            autoplay
             playsinline
-            class="gallery-img proc"
+            preload="none"
+            class="gallery-img proc deferred-video"
           ></video>
           <p class="proc-caption">Ministry of Love – Boulevard</p>
           <video
-            src="assets/images/process/PROCESS corridoio_1.mp4"
+            data-src="assets/images/process/PROCESS corridoio_1.mp4"
             muted
             loop
-            autoplay
             playsinline
-            class="gallery-img proc"
+            preload="none"
+            class="gallery-img proc deferred-video"
           ></video>
           <p class="proc-caption">Ministry of Love – Hallway</p>
           <video
-            src="assets/images/process/PROCESS sotterraneo_1.mp4"
+            data-src="assets/images/process/PROCESS sotterraneo_1.mp4"
             muted
             loop
-            autoplay
             playsinline
-            class="gallery-img proc"
+            preload="none"
+            class="gallery-img proc deferred-video"
           ></video>
           <p class="proc-caption">Ministry of Love – Torture Rooms</p>
           <video
-            src="assets/images/process/PROCESS room101_1.mp4"
+            data-src="assets/images/process/PROCESS room101_1.mp4"
             muted
             loop
-            autoplay
             playsinline
-            class="gallery-img proc"
+            preload="none"
+            class="gallery-img proc deferred-video"
           ></video>
           <p class="proc-caption">Ministry of Love – Room 101</p>
 
           <video
-            src="assets/images/process/PROCESS psicopol_1.mp4"
+            data-src="assets/images/process/PROCESS psicopol_1.mp4"
             muted
             loop
-            autoplay
             playsinline
-            class="gallery-img proc"
+            preload="none"
+            class="gallery-img proc deferred-video"
           ></video>
           <p class="proc-caption">Thought Police Patrol</p>
 
           <video
-            src="assets/images/process/PROCESS piazzaAdunata_1.mp4"
+            data-src="assets/images/process/PROCESS piazzaAdunata_1.mp4"
             muted
             loop
-            autoplay
             playsinline
-            class="gallery-img proc"
+            preload="none"
+            class="gallery-img proc deferred-video"
           ></video>
           <p class="proc-caption">Rallies Square</p>
           <video
-            src="assets/images/process/PROCESS winstonHouse_1.mp4"
+            data-src="assets/images/process/PROCESS winstonHouse_1.mp4"
             muted
             loop
-            autoplay
             playsinline
-            class="gallery-img proc"
+            preload="none"
+            class="gallery-img proc deferred-video"
           ></video>
           <p class="proc-caption">Winston's Home</p>
         </section>
         <section id="characters" class="proc-section">
           <h2>CHARACTERS</h2>
           <video
-            src="assets/images/process-gianlu/ratTruntable.mp4"
+            data-src="assets/images/process-gianlu/ratTruntable.mp4"
             muted
             loop
-            autoplay
             playsinline
-            class="gallery-img proc"
+            preload="none"
+            class="gallery-img proc deferred-video"
           ></video>
           <img
             class="gallery-img proc"
@@ -181,12 +181,12 @@
           />
           <p class="proc-caption">Rat</p>
           <video
-            src="assets/images/process/PROCESS julia_1.mp4"
+            data-src="assets/images/process/PROCESS julia_1.mp4"
             muted
             loop
-            autoplay
             playsinline
-            class="gallery-img proc"
+            preload="none"
+            class="gallery-img proc deferred-video"
           ></video>
           <p class="proc-caption">Julia with Rats Mask</p>
         </section>
@@ -202,5 +202,55 @@
       </div>
     </div>
     <script src="script_gallery.js"></script>
+    <script>
+      // select all videos that use deferred loading
+      (function () {
+        function initDeferredVideos() {
+          var vids = document.querySelectorAll("video[data-src]");
+          if (!vids.length) return;
+
+          function loadAndPlay(v) {
+            if (v.dataset.loaded) return;
+            v.src = v.dataset.src;
+            try {
+              v.load();
+            } catch (e) {}
+            v.dataset.loaded = "true";
+            // try to play muted videos automatically if possible
+            if (v.muted || v.getAttribute("autoplay") !== null) {
+              v.play().catch(function () {});
+            }
+          }
+
+          if ("IntersectionObserver" in window) {
+            var io = new IntersectionObserver(
+              function (entries) {
+                entries.forEach(function (entry) {
+                  var v = entry.target;
+                  if (entry.isIntersecting) {
+                    loadAndPlay(v);
+                  }
+                });
+              },
+              { rootMargin: "300px 0px" }
+            );
+            vids.forEach(function (v) {
+              io.observe(v);
+            });
+          } else {
+            // fallback: load all videos immediately
+            vids.forEach(function (v) {
+              loadAndPlay(v);
+            });
+          }
+        }
+
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", initDeferredVideos);
+        } else {
+          initDeferredVideos();
+        }
+      })();
+    </script>
   </body>
 </html>

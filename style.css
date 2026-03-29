@@ -374,6 +374,17 @@ h2 {
   justify-content: center;
 }
 
+/* Reserve space for process media before decode / deferred video load (reduce CLS) */
+.gallery-proc .gallery-img {
+  height: auto;
+}
+.gallery-proc video.gallery-img {
+  display: block;
+  width: 100%;
+  object-fit: contain;
+  background-color: #000;
+}
+
 /* ------------------- CREDITS ----------------------- */
 .credits-container {
   background-color: black;

@@ -168,7 +168,9 @@ a {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0);
-  transition: background-color 0.5s ease, cursor 0.5s ease;
+  transition:
+    background-color 0.5s ease,
+    cursor 0.5s ease;
   cursor: default;
   z-index: 4;
 }
@@ -180,7 +182,9 @@ a {
   background: black; /* Optional: background for letterboxing */
   margin: 100px auto;
   opacity: 0;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
   z-index: 101;
   pointer-events: none;
   transform: scale(0.8);
@@ -352,6 +356,15 @@ h2 {
   max-width: 650px;
   z-index: 10;
   margin-bottom: 30px;
+}
+.middle {
+  margin-top: 0;
+}
+.proc-par {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ------------------- CREDITS ----------------------- */

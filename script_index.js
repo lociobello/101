@@ -5,7 +5,8 @@ const credit = document.getElementById("credit");
 
 // Store the YouTube embed URL
 const youtubeURL =
-  "https://www.youtube.com/embed/rPIGJrrjlcw?si=3j82xB50ZlM485sP&autoplay=1&playsinline=1";
+  // TRAILER "https://www.youtube.com/embed/rPIGJrrjlcw?si=3j82xB50ZlM485sP&autoplay=1&playsinline=1";
+  "https://www.youtube.com/embed/Ah9B-x1dsSg?si=1mxrQ4B0erE3qq-K&autoplay=1&playsinline=1";
 
 ctaButton.addEventListener("click", (event) => {
   event.stopPropagation(); // Prevent triggering overlay's click event
